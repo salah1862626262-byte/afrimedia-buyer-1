@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afrimedia Bayer | Food Marketing & Gastronomy Production</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #060913;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FF6B00 0%, #FFA800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #FF6B00 0%, #FF8A00 100%);
+        }
+        .card-blur {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        [lang="ar"] {
+            direction: rtl;
+        }
+    </style>
+</head>
+<body class="text-gray-200 antialiased selection:bg-orange-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 w-full z-50 card-blur border-b border-gray-800/80">
+        <div class="max-w-7xl px-6 py-4 mx-auto flex items-center justify-between">
+            <div class="text-xl md:text-2xl font-extrabold tracking-wider text-white">
+                AFRIMEDIA <span class="text-orange-500">BAYER</span>
+            </div>
+            
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="relative inline-block text-left z-50">
+                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-gray-990 text-xs font-bold text-gray-300 border border-gray-700 rounded-full px-3 py-1.5 focus:outline-none focus:border-orange-500 cursor-pointer">
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="en">🇺🇸 EN</option>
+                        <option value="ar">🇲🇦 AR</option>
+                    </select>
+                </div>
+                
+                <a href="https://wa.me/212614884963" target="_blank" class="btn-gradient px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs font-bold text-black hover:opacity-90 transition shadow-lg shadow-orange-500/20">
+                    <span data-translate="nav-cta">Contact Pro</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative pt-44 pb-24 px-6 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/10 blur-[140px] rounded-full pointer-events-none"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-orange-400 uppercase rounded-full bg-orange-500/10 border border-orange-500/20" data-translate="hero-badge">
+                FOOD MARKETING & CREATIVE CONTENT PRODUCTION
+            </span>
+            <h1 class="text-4xl md:text-7xl font-extrabold text-white tracking-tight leading-tight mb-8">
+                <span data-translate="hero-title1">Nous Remplissons les Tables de votre Restaurant avec</span> <span class="gradient-text" data-translate="hero-title2">le New Food Ads.</span>
+            </h1>
+            <p class="text-base md:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed" data-translate="hero-desc">
+                À Ouezzane et partout au Maroc, la compétition est rude. Afrimedia Bayer crée des visuels culinaires ultra-premium, des vidéos ultra-alléchantes pour les réseaux sociaux, et gère vos campagnes publicitaires (Ads) pour attirer un flux continu de clients affamés dans votre établissement.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="https://wa.me/212614884963" target="_blank" class="w-full sm:w-auto btn-gradient px-8 py-4 rounded-xl text-md font-bold text-black hover:scale-[1.02] transition shadow-xl shadow-orange-500/20 text-center">
+                    <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> <span data-translate="hero-btn1">Booster mes Commandes</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 px-6 border-t border-gray-900 bg-[#04070F]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4"><span data-translate="services-title1">Notre Stratégie</span> <span class="text-orange-500" data-translate="services-title2">Culinaire</span></h2>
+                <p class="text-gray-400 text-sm md:text-base" data-translate="services-subtitle">De l'image à l'assiette : transformez de simples internautes en clients fidèles.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-blur rounded-2xl overflow-hidden group hover:border-orange-500/30 transition duration-300 flex flex-col">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800" alt="Production Photo Culinaire" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#04070F] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-3" data-translate="s1-title">Food Photography & Reels</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-translate="s1-desc">
+                                Production de vidéos (Reels/TikTok) ultra-rythmées et photos culinaires haute définition mettant en valeur la fraîcheur de vos plats, vos burgers, pizzas, ou plats traditionnels pour déclencher l'acte d'achat instantanément.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-gray-500 space-y-2.5">
+                            <li><i class="fa-solid fa-utensils text-orange-500 mr-2"></i> <span data-translate="s1-f1">Vidéos de préparation (Behind the scenes)</span></li>
+                            <li><i class="fa-solid fa-camera text-orange-500 mr-2"></i> <span data-translate="s1-f2">Éclairage studio pro et stylisme culinaire</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-blur rounded-2xl overflow-hidden group hover:border-orange-500/30 transition duration-300 flex flex-col">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800" alt="Publicité Locale pour Restaurant" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#04070F] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-3" data-translate="s2-title">Publicité Géo-Ciblée (Local Ads)</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-translate="s2-desc">
+                                Nous ciblons les clients potentiels situés exactement autour de votre restaurant (par exemple à Ouezzane ou votre quartier spécifique) pour leur donner envie de venir manger chez vous ce soir ou de commander en livraison.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-gray-500 space-y-2.5">
+                            <li><i class="fa-solid fa-location-dot text-orange-500 mr-2"></i> <span data-translate="s2-f1">Ciblage de proximité ultra-précis (Rayon en KM)</span></li>
+                            <li><i class="fa-solid fa-chart-line text-orange-500 mr-2"></i> <span data-translate="s2-f2">Offres spéciales (Week-end, Ramadan, Fêtes)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-blur rounded-2xl overflow-hidden group hover:border-orange-500/30 transition duration-300 flex flex-col">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1526367790999-0150786486a9?auto=format&fit=crop&q=80&w=800" alt="Livraison et visibilité" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#04070F] via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-3" data-translate="s3-title">Optimisation & Click to WhatsApp</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6" data-translate="s3-desc">
+                                Mise en place de campagnes "Click-to-WhatsApp" pour recevoir les commandes de livraison directement sur votre téléphone, avec création de menus numériques clairs et professionnels.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-gray-500 space-y-2.5">
+                            <li><i class="fa-solid fa-phone-flip text-orange-500 mr-2"></i> <span data-translate="s3-f1">Tunnels de commandes fluides</span></li>
+                            <li><i class="fa-solid fa-star text-orange-500 mr-2"></i> <span data-translate="s3-f2">Fidélisation et e-réputation locale</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 card-blur border-y border-gray-800 relative overflow-hidden text-center">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-orange-500/5 blur-[100px] rounded-full pointer-events-none"></div>
+        <div class="max-w-3xl mx-auto relative z-10">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6" data-translate="cta-title">Faites de Votre Restaurant la Référence Locale</h2>
+            <p class="text-gray-400 mb-10 max-w-xl mx-auto text-sm md:text-base" data-translate="cta-desc">Remplissez vos tables dès cette semaine. Contactez-nous pour planifier le shooting et lancer vos publicités.</p>
+            <a href="https://wa.me/212614884963" target="_blank" class="btn-gradient px-8 py-4 rounded-xl text-md font-bold text-black hover:scale-[1.02] transition inline-flex items-center gap-3 shadow-lg shadow-orange-500/20">
+                <i class="fa-brands fa-whatsapp text-xl"></i> <span data-translate="cta-btn">Discuter sur WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-10 px-6 bg-[#03050A] text-sm text-gray-600 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="font-bold tracking-wide text-gray-400">
+                &copy; 2026 <span class="text-orange-500">AFRIMEDIA BAYER</span>. Local Food Performance.
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs text-center md:text-left">
+                <a href="mailto:buyerafrimedia@gmail.com" class="text-gray-500 hover:text-orange-500 transition"><i class="fa-solid fa-envelope text-orange-500/60 mr-1"></i> buyerafrimedia@gmail.com</a>
+                <a href="https://wa.me/212614884963" target="_blank" class="text-gray-500 hover:text-orange-500 transition"><i class="fa-solid fa-phone text-orange-500/60 mr-1"></i> +212 614-884963</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            fr: {
+                "nav-cta": "Contact Pro",
+                "hero-badge": "FOOD MARKETING & CREATIVE CONTENT PRODUCTION",
+                "hero-title1": "Nous Remplissons les Tables de votre Restaurant avec",
+                "hero-title2": "le New Food Ads.",
+                "hero-desc": "À Ouezzane et partout au Maroc, la compétition est rude. Afrimedia Bayer crée des visuels culinaires ultra-premium, des vidéos ultra-alléchantes pour les réseaux sociaux, et gère vos campagnes publicitaires (Ads) pour attirer un flux continu de clients affamés dans votre établissement.",
+                "hero-btn1": "Booster mes Commandes",
+                "services-title1": "Notre Stratégie",
+                "services-title2": "Culinaire",
+                "services-subtitle": "De l'image à l'assiette : transformez de simples internautes en clients fidèles.",
+                "s1-title": "Food Photography & Reels",
+                "s1-desc": "Production de vidéos (Reels/TikTok) ultra-rythmées et photos culinaires haute définition mettant en valeur la fraîcheur de vos plats, vos burgers, pizzas, ou plats traditionnels pour déclencher l'acte d'achat instantanément.",
+                "s1-f1": "Vidéos de préparation (Behind the scenes)",
+                "s1-f2": "Éclairage studio pro et stylisme culinaire",
+                "s2-title": "Publicité Géo-Ciblée (Local Ads)",
+                "s2-desc": "Nous ciblons les clients potentiels situés exactement au tour de votre restaurant (par exemple à Ouezzane ou votre quartier spécifique) pour leur donner envie de venir manger chez vous ce soir ou de commander en livraison.",
+                "s2-f1": "Ciblage de proximité ultra-précis (Rayon en KM)",
+                "s2-f2": "Offres spéciales (Week-end, Ramadan, Fêtes)",
+                "s3-title": "Optimisation & Click to WhatsApp",
+                "s3-desc": "Mise en place de campagnes \"Click-to-WhatsApp\" pour recevoir les commandes de livraison directement sur votre téléphone, avec création de menus numériques clairs et professionnels.",
+                "s3-f1": "Tunnels de commandes fluides",
+                "s3-f2": "Fidélisation et e-réputation locale",
+                "cta-title": "Faites de Votre Restaurant la Référence Locale",
+                "cta-desc": "Remplissez vos tables dès cette semaine. Contactez-nous pour planifier le shooting et lancer vos publicités.",
+                "cta-btn": "Discuter sur WhatsApp"
+            },
+            en: {
+                "nav-cta": "Get Started",
+                "hero-badge": "FOOD MARKETING & CREATIVE CONTENT PRODUCTION",
+                "hero-title1": "We Fill Your Restaurant Tables Using",
+                "hero-title2": "The New Food Ads.",
+                "hero-desc": "In Ouezzane and across Morocco, competition is tough. Afrimedia Bayer produces ultra-premium culinary content, highly engaging viral videos, and fully manages your targeted ads to drive hungry customers right to your door.",
+                "hero-btn1": "Boost My Orders",
+                "services-title1": "Our Culinary",
+                "services-title2": "Growth Strategy",
+                "services-subtitle": "From visual to plate: turn simple scrollers into loyal hungry customers.",
+                "s1-title": "Food Photography & Reels",
+                "s1-desc": "Creating high-tempo short videos (Reels/TikTok) and high-def food photography showcasing the rich details of your burgers, pizzas, or premium traditional dishes.",
+                "s1-f1": "Behind the scenes kitchen preparation content",
+                "s1-f2": "Pro studio lighting & customized food styling",
+                "s2-title": "Hyper-Local Meta Ads",
+                "s2-desc": "Surgically target individuals located directly within your restaurant's neighborhood or city radius, converting local online traffic into immediate foot traffic.",
+                "s2-f1": "Ultra-precise radius targeting (KM base)",
+                "s2-f2": "Special seasonal offers (Weekends, Ramadan, Holidays)",
+                "s3-title": "Click to WhatsApp System",
+                "s3-desc": "Deploy high-converting Click-to-WhatsApp ad structures allowing customers to place delivery or reservation requests straight into your WhatsApp line.",
+                "s3-f1": "Frictionless ordering pipelines",
+                "s3-f2": "Local authority branding and review building",
+                "cta-title": "Make Your Restaurant The Local Hotspot",
+                "cta-desc": "Fill your seats this upcoming week. Contact us now to book your content shoot and scale your local reach.",
+                "cta-btn": "Chat on WhatsApp Now"
+            },
+            ar: {
+                "nav-cta": "تواصل معنا",
+                "hero-badge": "تسويق المطاعم وصناعة المحتوى الإبداعي",
+                "hero-title1": "نحن نملأ طاولات مطعمك بالزبائن باستخدام",
+                "hero-title2": "إعلانات الماكلة الجديدة.",
+                "hero-desc": "في وزان وكافة أنحاء المغرب، المنافسة قوية. إفريميديا باير تصنع لك محتوى مرئي سينمائي للأطباق، ومقاطع فيديو تثير الشهية على السوشيال ميديا، مع إدارة كاملة للإعلانات لجلب تدفق مستمر من الزبائن لمطعمك.",
+                "hero-btn1": "ضاعف طلباتك الآن",
+                "services-title1": "استراتيجية نمو",
+                "services-title2": "المطاعم",
+                "services-subtitle": "من الشاشة إلى الطبق: حول تصفح المستخدمين العاديين إلى طلبات حقيقية وزبائن دائمين.",
+                "s1-title": "إنتاج تصوير الماكلة ومقاطع الـ Reels",
+                "s1-desc": "صناعة مقاطع فيديو (Reels/TikTok) سريعة ومثيرة وجاذبة مع تصوير فوتوغرافي عالي الدقة يبرز جودة ولذة وجباتك (برغر، بيتزا، أطباق تقليدية) ليدفع الزبون للطلب فوراً.",
+                "s1-f1": "تصوير كواليس تحضير الوجبات (Behind the scenes)",
+                "s1-f2": "إضاءة استوديو احترافية وتنسيق مظهر الأطباق",
+                "s2-title": "إعلانات محلية دقيقة الاستهداف",
+                "s2-desc": "نستهدف الزبائن المتواجدين بدقة في محيط مطعمك (في مدينة وزان أو أحياء معينة) لمنحهم الرغبة في زيارتك لتناول العشاء أو طلب التوصيل فوراً.",
+                "s2-f1": "استهداف جيو-محلي دقيق للغاية (بالكيلومتر)",
+                "s2-f2": "حملات مخصصة لعروض (نهاية الأسبوع، رمضان، الأعياد)",
+                "s3-title": "منظومة الطلب المباشر عبر WhatsApp",
+                "s3-desc": "إعداد حملات \"النقرة المباشرة نحو الواتساب\" لتمكين الزبائن من إرسال طلبات التوصيل أو الحجز بسهولة تامة وبمنيو رقمي واضح واحترافي.",
+                "s3-f1": "قنوات طلب مرنة وسلسة للزبون",
+                "s3-f2": "بناء سمعة محلية قوية وزيادة التقييمات الإيجابية",
+                "cta-title": "اجعل مطعمك الوجهة الأولى في مدينتك",
+                "cta-desc": "ابدأ في استقبال المزيد من الزبائن من هذا الأسبوع. تواصل معنا لتحديد موعد التصوير وإطلاق حملتك الإعلانية.",
+                "cta-btn": "راسلنا مباشرة عبر واتساب"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            
+            // Text switching
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
