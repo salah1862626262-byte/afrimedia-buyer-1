@@ -1,376 +1,307 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr" class="dark">
+<html lang="fr" dir="ltr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afrimedia Bayer | Food Marketing & Gastronomy Production</title>
+    <title>Media Buying & Premium Photography for Dental Clinics</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class'
-        }
-    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Cairo:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
+        .font-luxury { font-family: 'Cinzel', serif; }
+        .font-body { font-family: 'Montserrat', sans-serif; }
+        .font-arabic { font-family: 'Cairo', sans-serif; }
+        
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #FF6B00 0%, #FFA800 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .btn-gradient {
-            background: linear-gradient(135deg, #FF6B00 0%, #FF8A00 100%);
-        }
-        .card-blur {
-            backdrop-filter: blur(12px);
+        
+        .gold-glow:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
             transition: all 0.3s ease;
-        }
-        [lang="ar"] {
-            direction: rtl;
-        }
-        .rotating-icon {
-            animation: spin 4s linear infinite;
-        }
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body class="bg-white text-gray-900 dark:bg-[#060913] dark:text-gray-200 antialiased selection:bg-orange-500 selection:text-white">
+<body class="font-body bg-[#0f0f0f] text-[#f5f5f5] selection:bg-[#d4af37] selection:text-black">
 
-    <header class="fixed top-0 left-0 w-full z-50 card-blur bg-white/80 border-b border-gray-200 dark:bg-[#060913]/80 dark:border-gray-800/80">
-        <div class="max-w-7xl px-6 py-4 mx-auto flex items-center justify-between">
-            <div class="text-xl md:text-2xl font-extrabold tracking-wider text-gray-900 dark:text-white">
-                AFRIMEDIA <span class="text-orange-500">BAYER</span>
+    <!-- موسيقى بيانو هادئة جداً (Zara Style) -->
+    <audio id="bgMusic" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3"></audio>
+
+    <!-- أدوات التحكم -->
+    <div class="fixed top-5 right-5 z-50 flex items-center gap-3 bg-black/40 backdrop-blur-md p-2 rounded-full border border-[#d4af37]/30">
+        <button id="musicBtn" onclick="toggleMusic()" class="w-10 h-10 rounded-full flex items-center justify-center text-[#d4af37] hover:bg-white/10 transition" title="Music On/Off">
+            <i id="musicIcon" class="fas fa-volume-mute"></i>
+        </button>
+        
+        <button id="themeBtn" onclick="toggleTheme()" class="w-10 h-10 rounded-full flex items-center justify-center text-[#d4af37] hover:bg-white/10 transition" title="Toggle Theme">
+            <i id="themeIcon" class="fas fa-sun"></i>
+        </button>
+
+        <div class="relative">
+            <button onclick="toggleLangDropdown()" class="px-3 py-1 text-xs font-semibold rounded-full border border-[#d4af37] text-[#d4af37] flex items-center gap-1 hover:bg-[#d4af37]/10">
+                <i class="fas fa-globe"></i> <span id="currentLangLabel">FR</span>
+            </button>
+            <div id="langDropdown" class="hidden absolute right-0 mt-2 w-32 bg-[#1a1a1a] border border-[#d4af37]/30 rounded-lg shadow-xl overflow-hidden text-sm">
+                <button onclick="changeLanguage('fr')" class="w-full px-4 py-2 text-left text-white hover:bg-[#d4af37]/20 transition">Français</button>
+                <button onclick="changeLanguage('ar')" class="w-full px-4 py-2 text-left text-white hover:bg-[#d4af37]/20 transition">العربية</button>
+                <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-white hover:bg-[#d4af37]/20 transition">English</button>
+                <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-white hover:bg-[#d4af37]/20 transition">Español</button>
             </div>
-            
-            <div class="flex items-center space-x-2 md:space-x-4">
-                <button onclick="toggleMusic()" id="musicBtn" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 bg-gray-50 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:bg-gray-900/90 dark:hover:bg-gray-800 transition" title="Play/Pause Background Music">
-                    <i id="musicIcon" class="fa-solid fa-music text-xs"></i>
-                </button>
+        </div>
+    </div>
 
-                <button onclick="toggleTheme()" class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 text-gray-700 bg-gray-50 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:bg-gray-900/90 dark:hover:bg-gray-800 transition">
-                    <i id="themeIcon" class="fa-solid fa-moon text-sm"></i>
-                </button>
-
-                <div class="relative inline-block text-left">
-                    <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-gray-50 text-xs font-bold text-gray-700 border border-gray-300 rounded-full px-2 py-1.5 focus:outline-none focus:border-orange-500 cursor-pointer dark:bg-gray-900/90 dark:text-gray-300 dark:border-gray-700">
-                        <option value="fr">🇫🇷 FR</option>
-                        <option value="en">🇺🇸 EN</option>
-                        <option value="ar">🇲🇦 AR</option>
-                    </select>
-                </div>
-                
-                <a href="https://wa.me/212614884963" target="_blank" class="btn-gradient px-4 py-2 md:px-5 md:py-2.5 rounded-full text-xs font-bold text-black hover:opacity-90 transition shadow-lg shadow-orange-500/20">
-                    <span data-translate="nav-cta">Contact Pro</span>
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center bg-cover bg-center" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(15,15,15,1)), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=1920');">
+        <div class="max-w-4xl mx-auto text-center px-6 mt-16">
+            <span class="text-[#d4af37] uppercase tracking-widest text-sm font-semibold block mb-4 font-luxury" data-key="hero-sub">Media Buying & Premium Photography</span>
+            <h1 id="mainTitle" class="text-4xl md:text-5xl font-luxury font-bold text-white mb-6 leading-tight drop-shadow-md" data-key="hero-title">
+                Attirez Plus de Patients Pour Votre Clinique Dentaire
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light" data-key="hero-desc">
+                Nous créons des visuels médicaux haut de gamme et propulsons vos campagnes pour acquérir des patients qualifiés.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#services" class="px-8 py-4 border border-[#d4af37] text-[#d4af37] font-semibold tracking-wider hover:bg-[#d4af37] hover:text-black transition-all duration-300 uppercase text-xs" data-key="btn-discover">
+                    Nos Services
+                </a>
+                <a href="https://wa.me/212614884963" target="_blank" class="px-8 py-4 bg-[#d4af37] text-black font-semibold tracking-wider hover:bg-[#b8952e] transition-all duration-300 uppercase text-xs gold-glow flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-lg"></i> <span data-key="btn-contact">Discuter sur WhatsApp</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <section class="relative pt-44 pb-24 px-6 overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-500/10 blur-[140px] rounded-full pointer-events-none"></div>
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-luxury font-bold text-[#d4af37] mb-4" data-key="prob-title">Image de Confiance & Campagnes Payantes</h2>
+            <div class="h-[1px] w-24 bg-[#d4af37] mx-auto"></div>
+        </div>
         
-        <div class="max-w-5xl mx-auto text-center relative z-10">
-            <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-orange-600 dark:text-orange-400 uppercase rounded-full bg-orange-500/10 border border-orange-500/20" data-translate="hero-badge">
-                FOOD MARKETING & CREATIVE CONTENT PRODUCTION
-            </span>
-            <h1 class="text-4xl md:text-7xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight mb-8">
-                <span data-translate="hero-title1">Nous Remplissons les Tables de votre Restaurant avec</span> <span class="gradient-text" data-translate="hero-title2">le New Food Ads.</span>
-            </h1>
-            <p class="text-base md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed" data-translate="hero-desc">
-                À Ouezzane et partout au Maroc, la compétition est rude. Afrimedia Bayer crée des visuels culinaires ultra-premium, des vidéos ultra-alléchantes pour les réseaux sociaux, et gère vos campagnes publicitaires (Ads) pour attirer un flux continu de clients affamés dans votre établissement.
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div>
+                <p class="text-gray-400 mb-6 leading-relaxed font-light text-justify" data-key="prob-desc1">
+                    En médecine dentaire esthétique, la confiance passe par le visuel. Nous réalisons des shootings pro de votre clinique et de vos résultats (Avant/Après) pour rassurer vos futurs patients.
+                </p>
+                <p class="text-gray-400 mb-8 leading-relaxed font-light text-justify" data-key="prob-desc2">
+                    Nous transformons ensuite cette autorité visuelle en campagnes publicitaires ultra-ciblées pour générer des rendez-vous constants pour vos traitements à haute valeur (Facettes, Implants, Orthodontie).
+                </p>
+            </div>
+            <div class="relative group overflow-hidden rounded-lg shadow-2xl border border-[#d4af37]/20">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800" alt="Modern Dental Clinic" class="w-full h-[450px] object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="py-20 bg-black/20 border-t border-b border-[#d4af37]/10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-luxury font-bold text-white mb-4" data-key="gallery-title">Notre Expertise Focus Cabinet Dentaire</h2>
+                <div class="h-[1px] w-24 bg-[#d4af37] mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#151515] rounded-lg overflow-hidden border border-white/5 shadow-xl group card-bg">
+                    <div class="p-8 text-center">
+                        <div class="text-[#d4af37] text-4xl mb-4"><i class="fas fa-camera-retro"></i></div>
+                        <h3 class="text-lg font-luxury text-[#d4af37] font-semibold mb-2" data-key="item1-title">Shootings Cliniques Pro</h3>
+                        <p class="text-gray-400 text-sm font-light" data-key="item1-desc">Photographies haute définition de vos infrastructures, de vos équipes et de vos cas cliniques.</p>
+                    </div>
+                </div>
+                <div class="bg-[#151515] rounded-lg overflow-hidden border border-white/5 shadow-xl group card-bg">
+                    <div class="p-8 text-center">
+                        <div class="text-[#d4af37] text-4xl mb-4"><i class="fas fa-users-cog"></i></div>
+                        <h3 class="text-lg font-luxury text-[#d4af37] font-semibold mb-2" data-key="item2-title">Campagnes Médicales</h3>
+                        <p class="text-gray-400 text-sm font-light" data-key="item2-desc">Ciblage local et précis de patients recherchant des soins esthétiques et chirurgicaux premium.</p>
+                    </div>
+                </div>
+                <div class="bg-[#151515] rounded-lg overflow-hidden border border-white/5 shadow-xl group card-bg">
+                    <div class="p-8 text-center">
+                        <div class="text-[#d4af37] text-4xl mb-4"><i class="fas fa-calendar-check"></i></div>
+                        <h3 class="text-lg font-luxury text-[#d4af37] font-semibold mb-2" data-key="item3-title">Flux de Rendez-vous</h3>
+                        <p class="text-gray-400 text-sm font-light" data-key="item3-desc">Acquisition directe d'appels et de messages de patients qualifiés prêts à réserver.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 text-center px-6 bg-cover bg-center relative" style="background-image: linear-gradient(to top, rgba(15,15,15,1), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1629909615184-74f495363b67?q=80&w=1920');">
+        <div class="max-w-2xl mx-auto relative z-10">
+            <h2 class="text-3xl md:text-4xl font-luxury font-bold mb-6 text-white" data-key="cta-title">Développez Votre Patientèle</h2>
+            <p class="text-gray-300 mb-8 font-light" data-key="cta-desc">
+                Discutez directement avec nous sur WhatsApp برای planifier votre shooting et lancer vos publicités médicales.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="https://wa.me/212614884963" target="_blank" class="w-full sm:w-auto btn-gradient px-8 py-4 rounded-xl text-md font-bold text-black hover:scale-[1.02] transition shadow-xl shadow-orange-500/20 text-center">
-                    <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> <span data-translate="hero-btn1">Booster mes Commandes</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-24 px-6 border-t border-gray-200 bg-gray-50 dark:border-gray-900 dark:bg-[#04070F]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-3xl mx-auto mb-20">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4"><span data-translate="services-title1">Notre Stratégie</span> <span class="text-orange-500" data-translate="services-title2">Culinaire</span></h2>
-                <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base" data-translate="services-subtitle">De l'image à l'assiette : transformez de simples internautes en clients fidèles.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white border border-gray-200 dark:bg-white/5 dark:border-white/5 rounded-2xl overflow-hidden group hover:border-orange-500/30 transition duration-300 flex flex-col shadow-sm card-blur">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=800" alt="Production Photo Culinaire" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-[#04070F] via-transparent to-transparent"></div>
-                    </div>
-                    <div class="p-8 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-translate="s1-title">Food Photography & Reels</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6" data-translate="s1-desc">
-                                Production de vidéos (Reels/TikTok) ultra-rythmées et photos culinaires haute définition mettant en valeur la fraîcheur de vos plats, vos burgers, pizzas, ou plats traditionnels pour déclencher l'acte d'achat instantanément.
-                            </p>
-                        </div>
-                        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2.5">
-                            <li><i class="fa-solid fa-utensils text-orange-500 mr-2"></i> <span data-translate="s1-f1">Vidéos de préparation (Behind the scenes)</span></li>
-                            <li><i class="fa-solid fa-camera text-orange-500 mr-2"></i> <span data-translate="s1-f2">Éclairage studio pro et stylisme culinaire</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bg-white border border-gray-200 dark:bg-white/5 dark:border-white/5 rounded-2xl overflow-hidden group hover:border-orange-500/30 transition duration-300 flex flex-col shadow-sm card-blur">
-                    <div class="h-56 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800" alt="Publicité Locale pour Restaurant" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <div class="absolute inset-0 bg-gradient-to-t from-white/20 dark:from-[#04070F] via-transparent to-transparent"></div>
-                    </div>
-                    <div class="p-8 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-translate="s2-title">Publicité Géo-Ciblée (Local Ads)</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6" data-translate="s2-desc">
-                                Nous ciblons les clients potentiels situés exactement autour de votre restaurant (par exemple à Ouezzane ou votre quartier spécifique) pour leur donner envie de venir manger chez vous ce soir ou de commander en livraison.
-                            </p>
-                        </div>
-                        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2.5">
-                            <li><i class="fa-solid fa-location-dot text-orange-500 mr-2"></i> <span data-translate="s2-f1">Ciblage de proximité ultra-précis (Rayon en KM)</span></li>
-                            <li><i class="fa-solid fa-chart-line text-orange-500 mr-2"></i> <span data-translate="s2-f2">Offres spéciales (Week-end, Ramadan, Fêtes)</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="bg-white border border-gray-200 dark:bg-white/5 dark:border-white/5 rounded-2xl overflow-hidden group hover:border-orange-500/30 transition duration-300 flex flex-col shadow-sm card-blur">
-                    <div class="p-4 bg-gray-100 dark:bg-black/40 border-b border-gray-200 dark:border-gray-800/60 flex flex-col gap-3 justify-center h-56">
-                        <div class="flex items-center justify-between bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
-                            <div class="flex items-center gap-2.5">
-                                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                                <span class="text-[11px] font-bold tracking-wide text-gray-700 dark:text-gray-300 uppercase">1. Creative Social Ad</span>
-                            </div>
-                            <span class="text-[10px] text-orange-500 font-semibold bg-orange-500/10 px-2 py-0.5 rounded-full">Engagement 🔥</span>
-                        </div>
-                        
-                        <div class="flex items-center justify-between bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-orange-500/40 dark:border-orange-500/30 shadow-sm relative">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-brands fa-whatsapp text-green-500 text-sm"></i>
-                                <span class="text-[11px] font-bold tracking-wide text-gray-900 dark:text-white uppercase">2. Instant WhatsApp Link</span>
-                            </div>
-                            <span class="text-[10px] text-green-500 font-semibold bg-green-500/10 px-2 py-0.5 rounded-full animate-bounce">Click to Chat ⚡</span>
-                        </div>
-
-                        <div class="flex items-center justify-between bg-white dark:bg-gray-900 p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
-                            <div class="flex items-center gap-2.5">
-                                <i class="fa-solid fa-receipt text-blue-500 text-xs"></i>
-                                <span class="text-[11px] font-bold tracking-wide text-gray-700 dark:text-gray-300 uppercase">3. Automated Order Generated</span>
-                            </div>
-                            <span class="text-[10px] text-blue-500 font-semibold bg-blue-500/10 px-2 py-0.5 rounded-full">New Lead 🛒</span>
-                        </div>
-                    </div>
-
-                    <div class="p-8 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3" data-translate="s3-title">Optimisation & Click to WhatsApp</h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6" data-translate="s3-desc">
-                                Mise en place de campagnes "Click-to-WhatsApp" pour recevoir les commandes de livraison directement sur votre téléphone, avec création de menus numériques clairs et professionnels.
-                            </p>
-                        </div>
-                        <ul class="text-xs text-gray-500 dark:text-gray-400 space-y-2.5">
-                            <li><i class="fa-solid fa-phone-flip text-orange-500 mr-2"></i> <span data-translate="s3-f1">Tunnels de commandes fluides</span></li>
-                            <li><i class="fa-solid fa-star text-orange-500 mr-2"></i> <span data-translate="s3-f2">Fidélisation et e-réputation locale</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 px-6 border-y border-gray-200 bg-white dark:border-gray-800 dark:bg-[#060913] relative overflow-hidden text-center card-blur">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-orange-500/5 blur-[100px] rounded-full pointer-events-none"></div>
-        <div class="max-w-3xl mx-auto relative z-10">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-6" data-translate="cta-title">Faites de Votre Restaurant la Référence Locale</h2>
-            <p class="text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto text-sm md:text-base" data-translate="cta-desc">Remplissez vos tables dès cette semaine. Contactez-nous pour planifier le shooting et lancer vos publicités.</p>
-            <a href="https://wa.me/212614884963" target="_blank" class="btn-gradient px-8 py-4 rounded-xl text-md font-bold text-black hover:scale-[1.02] transition inline-flex items-center gap-3 shadow-lg shadow-orange-500/20">
-                <i class="fa-brands fa-whatsapp text-xl"></i> <span data-translate="cta-btn">Discuter sur WhatsApp</span>
+            <a href="https://wa.me/212614884963" target="_blank" class="inline-flex items-center gap-3 px-10 py-5 bg-[#d4af37] text-black font-bold tracking-widest hover:bg-[#b8952e] transition rounded-none shadow-xl gold-glow uppercase text-sm">
+                <i class="fab fa-whatsapp text-xl"></i> <span data-key="cta-btn">Lancer Votre Stratégie</span>
             </a>
         </div>
     </section>
 
-    <footer class="py-10 px-6 bg-gray-100 text-sm text-gray-500 border-t border-gray-200 dark:bg-[#03050A] dark:text-gray-600 dark:border-gray-900">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="font-bold tracking-wide text-gray-700 dark:text-gray-400">
-                &copy; 2026 <span class="text-orange-500">AFRIMEDIA BAYER</span>. Local Food Performance.
-            </div>
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-xs text-center md:text-left">
-                <a href="mailto:buyerafrimedia@gmail.com" class="text-gray-500 hover:text-orange-500 transition"><i class="fa-solid fa-envelope text-orange-500/60 mr-1"></i> buyerafrimedia@gmail.com</a>
-                <a href="https://wa.me/212614884963" target="_blank" class="text-gray-500 hover:text-orange-500 transition"><i class="fa-solid fa-phone text-orange-500/60 mr-1"></i> +212 614-884963</a>
-            </div>
-        </div>
+    <footer class="py-8 bg-[#0a0a0a] border-t border-white/5 text-center text-xs text-gray-500">
+        <p>&copy; 2026 Dental Media Buying & Photography. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // --- 1. CONFIGURATION AUDIO ---
-        const DEFAULT_MUSIC_SRC = "/audio/lofi-study-calm-peaceful-chill-hop-112191.mp3";
-        const FALLBACK_MUSIC_SRC = "https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3";
-        
-        let audio = new Audio();
-        audio.src = DEFAULT_MUSIC_SRC;
-        audio.volume = 0.15;
-        audio.loop = true;
-        
-        let isPlaying = false;
-        let fallbackTried = false;
-
-        audio.onerror = function() {
-            if (!fallbackTried) {
-                fallbackTried = true;
-                audio.src = FALLBACK_MUSIC_SRC;
-                if(isPlaying) {
-                    audio.play().catch(() => {});
-                }
-            }
-        };
-
-        function toggleMusic() {
-            const icon = document.getElementById('musicIcon');
-            const btn = document.getElementById('musicBtn');
-            
-            if (!isPlaying) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                    icon.classList.add('rotating-icon');
-                    btn.classList.add('border-orange-500', 'text-orange-500');
-                }).catch(err => {
-                    console.log("Interaction required first.");
-                });
-            } else {
-                audio.pause();
-                isPlaying = false;
-                icon.classList.remove('rotating-icon');
-                btn.classList.remove('border-orange-500', 'text-orange-500');
-            }
-        }
-
-        function startAudioOnInteraction() {
-            if (!isPlaying) {
-                toggleMusic();
-            }
-            window.removeEventListener('pointerdown', startAudioOnInteraction);
-            window.removeEventListener('keydown', startAudioOnInteraction);
-        }
-        window.addEventListener('pointerdown', startAudioOnInteraction);
-        window.addEventListener('keydown', startAudioOnInteraction);
-
-
-        // --- 2. CONFIGURATION DES TRADUCTIONS ---
         const translations = {
             fr: {
-                "nav-cta": "Contact Pro",
-                "hero-badge": "FOOD MARKETING & CREATIVE CONTENT PRODUCTION",
-                "hero-title1": "Nous Remplissons les Tables de votre Restaurant avec",
-                "hero-title2": "le New Food Ads.",
-                "hero-desc": "À Ouezzane et partout au Maroc, la compétition est rude. Afrimedia Bayer crée des visuels culinaires ultra-premium, des vidéos ultra-alléchantes pour les réseaux sociaux, et gère vos campagnes publicitaires (Ads) pour attirer un flux continu de clients affamés dans votre établissement.",
-                "hero-btn1": "Booster mes Commandes",
-                "services-title1": "Notre Stratégie",
-                "services-title2": "Culinaire",
-                "services-subtitle": "De l'image à l'assiette : transformez de simples internautes en clients fidèles.",
-                "s1-title": "Food Photography & Reels",
-                "s1-desc": "Production de vidéos (Reels/TikTok) ultra-rythmées et photos culinaires haute définition mettant en valeur la fraîcheur de vos plats, vos burgers, pizzas, ou plats traditionnels pour déclencher l'acte d'achat instantanément.",
-                "s1-f1": "Vidéos de préparation (Behind the scenes)",
-                "s1-f2": "Éclairage studio pro et stylisme culinaire",
-                "s2-title": "Publicité Géo-Ciblée (Local Ads)",
-                "s2-desc": "Nous ciblons les clients potentiels situés exactement autour de votre restaurant (par exemple à Ouezzane ou votre quartier spécifique) pour leur donner envie de venir manger chez vous ce soir ou de commander en livraison.",
-                "s2-f1": "Ciblage de proximité ultra-précis (Rayon en KM)",
-                "s2-f2": "Offres spéciales (Week-end, Ramadan, Fêtes)",
-                "s3-title": "System WhatsApp Automation",
-                "s3-desc": "Mise en place de campagnes \"Click-to-WhatsApp\" pour recevoir les commandes de livraison directement sur votre téléphone, avec création de menus numériques clairs et professionnels.",
-                "s3-f1": "Tunnels de commandes fluides",
-                "s3-f2": "Fidélisation et e-réputation locale",
-                "cta-title": "Faites de Votre Restaurant la Référence Locale",
-                "cta-desc": "Remplissez vos tables dès cette semaine. Contactez-nous pour planifier le shooting et lancer vos publicités.",
-                "cta-btn": "Discuter sur WhatsApp"
-            },
-            en: {
-                "nav-cta": "Get Started",
-                "hero-badge": "FOOD MARKETING & CREATIVE CONTENT PRODUCTION",
-                "hero-title1": "We Fill Your Restaurant Tables Using",
-                "hero-title2": "The New Food Ads.",
-                "hero-desc": "In Ouezzane and across Morocco, competition is tough. Afrimedia Bayer produces ultra-premium culinary content, highly engaging viral videos, and fully manages your targeted ads to drive hungry customers right to your door.",
-                "hero-btn1": "Boost My Orders",
-                "services-title1": "Our Culinary",
-                "services-title2": "Growth Strategy",
-                "services-subtitle": "From visual to plate: turn simple scrollers into loyal hungry customers.",
-                "s1-title": "Food Photography & Reels",
-                "s1-desc": "Creating high-tempo short videos (Reels/TikTok) and high-def food photography showcasing the rich details of your burgers, pizzas, or premium traditional dishes.",
-                "s1-f1": "Behind the scenes kitchen preparation content",
-                "s1-f2": "Pro studio lighting & customized food styling",
-                "s2-title": "Hyper-Local Meta Ads",
-                "s2-desc": "Surgically target individuals located directly within your restaurant's neighborhood or city radius, converting local online traffic into immediate foot traffic.",
-                "s2-f1": "Ultra-precise radius targeting (KM base)",
-                "s2-f2": "Special seasonal offers (Weekends, Ramadan, Holidays)",
-                "s3-title": "WhatsApp Funnel Automation",
-                "s3-desc": "Deploy high-converting Click-to-WhatsApp ad structures allowing customers to place delivery or reservation requests straight into your WhatsApp line.",
-                "s3-f1": "Frictionless ordering pipelines",
-                "s3-f2": "Local authority branding and review building",
-                "cta-title": "Make Your Restaurant The Local Hotspot",
-                "cta-desc": "Fill your seats this upcoming week. Contact us now to book your content shoot and scale your local reach.",
-                "cta-btn": "Chat on WhatsApp Now"
+                "hero-sub": "Media Buying & Premium Photography",
+                "hero-title": "Attirez Plus de Patients Pour Votre Clinique Dentaire",
+                "hero-desc": "Nous créons des visuels médicaux haut de gamme et propulsons vos campagnes pour acquérir des patients qualifiés.",
+                "btn-discover": "Nos Services",
+                "btn-contact": "Discuter sur WhatsApp",
+                "prob-title": "Image de Confiance & Campagnes Payantes",
+                "prob-desc1": "En médecine dentaire esthétique, la confiance passe par le visuel. Nous réalisons des shootings pro de votre clinique et de vos résultats (Avant/Après) pour rassurer vos futurs patients.",
+                "prob-desc2": "Nous transformons ensuite cette autorité visuelle en campagnes publicitaires ultra-ciblées pour générer des rendez-vous constants pour vos traitements à haute valeur (Facettes, Implants, Orthodontie).",
+                "gallery-title": "Notre Expertise Focus Cabinet Dentaire",
+                "item1-title": "Shootings Cliniques Pro",
+                "item1-desc": "Photographies haute définition de vos infrastructures, de vos équipes et de vos cas cliniques.",
+                "item2-title": "Campagnes Médicales",
+                "item2-desc": "Ciblage local et précis de patients recherchant des soins esthétiques et chirurgicaux premium.",
+                "item3-title": "Flux de Rendez-vous",
+                "item3-desc": "Acquisition directe d'appels et de messages de patients qualifiés prêts à réserver.",
+                "cta-title": "Développez Votre Patientèle",
+                "cta-desc": "Discutez directement avec nous sur WhatsApp pour planifier votre shooting et lancer vos publicités médicales.",
+                "cta-btn": "Lancer Votre Stratégie"
             },
             ar: {
-                "nav-cta": "تواصل معنا",
-                "hero-badge": "تسويق المطاعم وصناعة المحتوى الإبداعي",
-                "hero-title1": "نحن نملأ طاولات مطعمك بالزبائن باستخدام",
-                "hero-title2": "إعلانات الماكلة الجديدة.",
-                "hero-desc": "في وزان وكافة أنحاء المغرب، المنافسة قوية. إفريميديا باير تصنع لك محتوى مرئي سينمائي للأطباق، ومقاطع فيديو تثير الشهية على السوشيال ميديا، مع إدارة كاملة للإعلانات لجلب تدفق مستمر من الزبائن لمطعمك.",
-                "hero-btn1": "ضاعف طلباتك الآن",
-                "services-title1": "استراتيجية نمو",
-                "services-title2": "المطاعم",
-                "services-subtitle": "من الشاشة إلى الطبق: حول تصفح المستخدمين العاديين إلى طلبات حقيقية وزبائن دائمين.",
-                "s1-title": "إنتاج تصوير الماكلة ومقاطع الـ Reels",
-                "s1-desc": "صناعة مقاطع فيديو (Reels/TikTok) سريعة ومثيرة وجاذبة مع تصوير فوتوغرافي عالي الدقة يبرز جودة ولذة وجباتك (برغر، بيتزا، أطباق تقليدية) ليدفع الزبون للطلب فوراً.",
-                "s1-f1": "تصوير كواليس تحضير الوجبات (Behind the scenes)",
-                "s1-f2": "إضاءة استوديو احترافية وتنسيق مظهر الأطباق",
-                "s2-title": "إعلانات محلية دقيقة الاستهداف",
-                "s2-desc": "نستهدف الزبائن المتواجدين بدقة في محيط مطعمك (في مدينة وزان أو أحياء معينة) لمنحهم الرغبة في زيارتك لتناول العشاء أو طلب التوصيل فوراً.",
-                "s2-f1": "استهداف جيو-محلي دقيق للغاية (بالكيلومتر)",
-                "s2-f2": "حملات مخصصة لعروض (نهاية الأسبوع، رمضان، الأعياد)",
-                "s3-title": "منظومة الطلب المباشر عبر WhatsApp",
-                "s3-desc": "إعداد حملات \"النقرة المباشرة نحو الواتساب\" لتمكين الزبائن من إرسال طلبات التوصيل أو الحجز بسهولة تامة وبمنيو رقمي واضح واحترافي.",
-                "s3-f1": "قنوات طلب مرنة وسلسة للزبون",
-                "s3-f2": "بناء سمعة محلية قوية وزيادة التقييمات الإيجابية",
-                "cta-title": "اجعل مطعمك الوجهة الأولى في مدينتك",
-                "cta-desc": "ابدأ في استقبال المزيد من الزبائن من هذا الأسبوع. تواصل معنا لتحديد موعد التصوير وإطلاق حملتك الإعلانية.",
-                "cta-btn": "راسلنا مباشرة عبر واتساب"
+                "hero-sub": "إعلانات ممولة وتصوير بريميوم",
+                "hero-title": "المزيد من المرضى للعيادة الطبية ديالك",
+                "hero-desc": "كنصوروا العيادة والنتائج ديالك بشكل احترافي وكنطلقوا حملات إعلانية لجلب مرضى مهتمين.",
+                "btn-discover": "خدماتنا",
+                "btn-contact": "تحدث معنا عبر واتساب",
+                "prob-title": "بناء الثقة وقوة الاستهداف الإعلاني",
+                "prob-desc1": "في طب الأسنان التجميلي، المريض كيتيق بالعين. كندروا جلسات تصوير احترافية للعيادة وحالات ابتسامة هوليود (قبل/بعد) باش تطمئن زبنائك الجدد.",
+                "prob-desc2": "من بعد، كنحولوا هاد الصور لإعلانات ممولة ومستهدفة بدقة لجلب مواعيد مستمرة للخدمات العالية (تجميل، زراعة، وتقويم الأسنان).",
+                "gallery-title": "خبرتنا في تخصص عيادات الأسنان",
+                "item1-title": "تصوير عيادات احترافي",
+                "item1-desc": "إبراز جودة المعدات، الطاقم الطبي وحالات النجاح بزوايا احترافية وإضاءة سينمائية.",
+                "item2-title": "حملات إعلانية طبية",
+                "item2-desc": "استهداف محلي دقيق للناس لي باغيين يديروا خدمات تجميل الأسنان والزراعة العالية.",
+                "item3-title": "تدفق المواعيد",
+                "item3-desc": "جلب اتصالات ورسائل مباشرة من مرضى مستعدين لحجز موعدهم في العيادة.",
+                "cta-title": "طور عيادتك الآن",
+                "cta-desc": "تواصل معانا مباشرة باش نحددوا موعد التصوير ونبدأوا حملات الإعلانات الخاصة بعيادتك.",
+                "cta-btn": "ابدأ إستراتيجيتك الآن"
+            },
+            en: {
+                "hero-sub": "Media Buying & Premium Photography",
+                "hero-title": "Attract More Qualified Patients to Your Dental Clinic",
+                "hero-desc": "We create high-end medical visuals and run targeted ads to acquire premium patients.",
+                "btn-discover": "Our Services",
+                "btn-contact": "Chat on WhatsApp",
+                "prob-title": "Visual Trust & Targeted Medical Ads",
+                "prob-desc1": "In cosmetic dentistry, patients buy with their eyes. We deliver professional photography shoots of your clinic and Before/After cases to build absolute trust.",
+                "prob-desc2": "Then, we leverage these high-end visuals into advanced ad campaigns to generate consistent bookings for your high-value treatments (Veneers, Implants, Ortho).",
+                "gallery-title": "Our Dental-Focused Expertise",
+                "item1-title": "Pro Clinical Shoots",
+                "item1-desc": "High-definition photography of your infrastructure, medical staff, and clinical cases.",
+                "item2-title": "Medical Ad Campaigns",
+                "item2-desc": "Hyper-local targeting of premium patients searching for cosmetic and surgical dental treatments.",
+                "item3-title": "Consistent Bookings",
+                "item3-desc": "Generating direct phone calls and WhatsApp inquiries from high-intent patients ready to book.",
+                "cta-title": "Grow Your Dental Practice",
+                "cta-desc": "Chat directly with us on WhatsApp to schedule your clinical shoot and launch your medical campaigns.",
+                "cta-btn": "Launch Your Strategy"
+            },
+            es: {
+                "hero-sub": "Media Buying & Fotografía Premium",
+                "hero-title": "Atraiga Más Pacientes Cualificados a su Clínica Dental",
+                "hero-desc": "Creamos contenido visual médico de alta gama y gestionamos anuncios para adquirir pacientes premium.",
+                "btn-discover": "Servicios",
+                "btn-contact": "Contactar por WhatsApp",
+                "prob-title": "Confianza Visual y Anuncios Médicos",
+                "prob-desc1": "En odontología estética, los pacientes eligen con los ojos. Realizamos sesiones de fotos profesionales de su clínica y casos Antes/Después para generar confianza absoluta.",
+                "prob-desc2": "Luego, transformamos esas imágenes premium en campañas publicitarias de alto rendimiento para asegurar citas constantes en tratamientos de alto valor.",
+                "gallery-title": "Nuestra Especialidad Dental",
+                "item1-title": "Shooting Clínico Pro",
+                "item1-desc": "Fotografía en alta definición de sus instalaciones, equipo médico y casos de éxito.",
+                "item2-title": "Anuncios Médicos",
+                "item2-desc": "Segmentación local precisa de pacientes que buscan estética y cirugía dental avanzada.",
+                "item3-title": "Flujo de Citas",
+                "item3-desc": "Generación de llamadas y mensajes directos de pacientes listos para reservar su cita.",
+                "cta-title": "Haga Crecer su Clínica",
+                "cta-desc": "Hable con nosotros para planificar su próxima sesión de fotos y lanzar sus anuncios médicos.",
+                "cta-btn": "Iniciar Estrategia"
             }
         };
 
+        function toggleLangDropdown() {
+            const dd = document.getElementById('langDropdown');
+            dd.classList.toggle('hidden');
+        }
+
         function changeLanguage(lang) {
-            document.documentElement.lang = lang;
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+            document.getElementById('langDropdown').classList.add('hidden');
+            document.getElementById('currentLangLabel').innerText = lang.toUpperCase();
             
-            const elements = document.querySelectorAll('[data-translate]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+            if(lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+                document.body.classList.add('font-arabic');
+            } else {
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = lang;
+                document.body.classList.remove('font-arabic');
+            }
+            
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if(translations[lang][key]) {
+                    el.innerText = translations[lang][key];
                 }
             });
         }
 
-        // --- 3. CONFIGURATION MODE SOMBRE / CLAIR ---
+        let isDark = true;
         function toggleTheme() {
-            const html = document.documentElement;
-            const icon = document.getElementById('themeIcon');
+            isDark = !isDark;
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            const cards = document.querySelectorAll('.card-bg');
             
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+            if(!isDark) {
+                body.classList.remove('bg-[#0f0f0f]', 'text-[#f5f5f5]');
+                body.classList.add('bg-[#f9f6f0]', 'text-[#1a1a1a]');
+                themeIcon.className = "fas fa-moon";
+                
+                cards.forEach(c => {
+                    c.classList.remove('bg-[#151515]');
+                    c.classList.add('bg-white', 'border-black/10');
+                });
             } else {
-                html.classList.add('dark');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                body.classList.remove('bg-[#f9f6f0]', 'text-[#1a1a1a]');
+                body.classList.add('bg-[#0f0f0f]', 'text-[#f5f5f5]');
+                themeIcon.className = "fas fa-sun";
+                
+                cards.forEach(c => {
+                    c.classList.remove('bg-white', 'border-black/10');
+                    c.classList.add('bg-[#151515]');
+                });
+            }
+        }
+
+        let isPlaying = false;
+        const music = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        music.volume = 0.15; 
+
+        function toggleMusic() {
+            if(!isPlaying) {
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicIcon.className = "fas fa-volume-up";
+                }).catch(err => console.log("Audio play blocked"));
+            } else {
+                music.pause();
+                isPlaying = false;
+                musicIcon.className = "fas fa-volume-mute";
             }
         }
     </script>
